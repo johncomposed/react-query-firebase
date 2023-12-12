@@ -147,7 +147,7 @@ export function useSubscription<TData, TError, R = TData>(
                   eventCount[subscriptionHash] ??= 0;
                   eventCount[subscriptionHash]++;
                   if (eventCount[subscriptionHash] === 1) {
-                    resolvePromise(data || null);
+                    resolvePromise(data ?? null);
                   } else {
                     queryClient.setQueryData(queryKey, data);
                   }
