@@ -46,6 +46,7 @@ export function useFirestoreInfiniteQuery<
   >
 ): UseInfiniteQueryResult<R, FirestoreError> {
   return useInfiniteQuery<QuerySnapshot<T>, FirestoreError, R>({
+    ...(useInfiniteQueryOptions ?? {}),
     queryKey: useInfiniteQueryOptions?.queryKey ?? key,
     async queryFn(ctx: QueryFunctionContext<QueryKey, Query<T>>) {
       const query: Query<T> = ctx.pageParam ?? initialQuery;

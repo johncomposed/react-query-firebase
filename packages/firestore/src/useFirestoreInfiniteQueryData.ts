@@ -80,6 +80,7 @@ export function useFirestoreInfiniteQueryData<
   >
 ): UseInfiniteQueryResult<R, FirestoreError> {
   return useInfiniteQuery<WithIdField<T, ID>[], FirestoreError, R>({
+    ...(useInfiniteQueryOptions ?? {}),
     queryKey: useInfiniteQueryOptions?.queryKey ?? key,
     async queryFn(
       ctx: QueryFunctionContext<QueryKey, Query<T>>
